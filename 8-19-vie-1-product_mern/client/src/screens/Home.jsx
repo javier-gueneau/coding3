@@ -1,35 +1,35 @@
 import axios from 'axios';
 import React,{useState,useEffect} from 'react';
 import ProductList from '../components/productList'
+import { Link } from 'react-router-dom';
 
 const Home =()=>{
     
-    const[title,setTitle]=useState("");
+      const[title,setTitle]=useState("");
       const[price,setPrice]=useState("");
       const[description,setDescription]=useState("");
       const[products,setProducts]=useState([]);
-    
-      const handleSubmit = (event) => {
+      
+      /* useEffect(()=>{
+        axios.get('http://localhost:8000/api/product/list')
+        .then(res=>{
+            console.log(res);
+            setProducts(res.data)
+            })
+      },[]) */
+
+    const handleSubmit = (event) => {
         event.preventDefault();
-        //alert('SUBMITTING PRODUCT FORM')
         axios.post('http://localhost:8000/api/product/create',{
           title,
           price,
           description
         })
         .then(res=>{
-          console.log(res);
+          console.log(res.data.title);
           setProducts([...products,res.data])
-        })
-      }
-    
-      useEffect(()=>{
-        axios.get('http://localhost:8000/api/product/list')
-        .then(res=>{
-            console.log(res);
-            setProducts(res.data) 
-                })
-    },[])
+          });
+    }
 
     return(
         <div className="App">
@@ -49,8 +49,9 @@ const Home =()=>{
                 </label>
                 <button>Create</button>
             </form>
-
-            <ProductList products={products}/>
+  
+            
+            <ProductList  />
 
         </div>
     )

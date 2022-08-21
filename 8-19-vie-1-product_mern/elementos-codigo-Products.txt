@@ -1,0 +1,4 @@
+{products.map((p,index)=>{
+            return <p key={index} ><Link to={`/${p._id}`} >{p.title} {/* {p._id} */}  </Link> </p>
+        })}
+        

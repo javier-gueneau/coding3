@@ -6,6 +6,7 @@ import ProductList from './components/productList'
 import { Route, Routes } from 'react-router-dom';
 import Home from './screens/Home';
 import ProductCard from './components/productCard';
+import Update from './screens/Update';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
     
       <Routes>
           <Route path={'/:id'} element={<ProductCard/>} ></Route>
+          <Route path={'/:id/edit'} element={<Update/>} ></Route>
 
           <Route path={'/'} element={<Home/>} ></Route>
       </Routes>

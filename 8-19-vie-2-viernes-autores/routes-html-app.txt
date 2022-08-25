@@ -1,0 +1,8 @@
+<Routes>
+          <Route path={'/add'} element={<Add/>} ></Route>
+          <Route path={'/:id/edit'} element={<Edit/>} ></Route>
+
+          <Route path={'/'} element={<Home/>} ></Route>
+      </Routes>
+
+      

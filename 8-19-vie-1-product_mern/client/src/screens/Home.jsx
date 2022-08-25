@@ -14,9 +14,17 @@ const Home =()=>{
         axios.get('http://localhost:8000/api/product/list')
         .then(res=>{
             console.log(res);
-            setProducts(res.data)
+            setProducts(res.data) 
             })
       },[]) */
+
+      useEffect(()=>{
+        axios.get('http://localhost:8000/api/product/list')
+        .then(res=>{
+            console.log(res);
+            setProducts(res.data)
+            })
+      },[])
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -51,7 +59,7 @@ const Home =()=>{
             </form>
   
             
-            <ProductList  />
+            <ProductList products={products} setProducts={setProducts} />
 
         </div>
     )

@@ -4,10 +4,10 @@ import { Link, useParams } from 'react-router-dom';
 
 
 const Update = props=>{
-    const{id}=useParams();
-    const[title,setTitle]=useState();
-    const[price,setPrice]=useState();
-    const[description,setDescription]=useState();
+    const{id}=useParams("");
+    const[title,setTitle]=useState("");
+    const[price,setPrice]=useState("");
+    const[description,setDescription]=useState("");
     
     useEffect(()=>{
         axios.get('http://localhost:8000/api/product/'+id)

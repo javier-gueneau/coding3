@@ -17,17 +17,22 @@ module.exports.listar = (req, res) => {
     
 //editar
 module.exports.editar = (req, res) => {
-    Autores.findOneAndUpdate({_id:req.params.id},req.body,{new:true})
+    Autores.findOneAndUpdate({_id:req.params.id},req.body,{new:true,runValidators:true})
     .then((autores) =>res.json(autores))
     .catch(err=>res.json(err))
 }
 
 //eliminar
+module.exports.eliminar=(request,response)=>{
+    Autores.deleteOne({_id: request.params.id}  )
+    .then(deleteConfirmation =>response.json(deleteConfirmation))
+    .catch(err=>response.json(err))
+}
 
 
-
-/* module.exports.lookUp = (req, res) => {
-    Product.findById(req.params.id)
+//look up
+module.exports.buscar = (req, res) => {
+    Autores.findById(req.params.id)
     .then(data =>res.json({data:data}))
     .catch(err=>res.json(err))
-} */
+}

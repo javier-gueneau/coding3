@@ -5,15 +5,9 @@ import { Link } from 'react-router-dom';
 
 const ProductList =props=>{
     
-    const[products,setProducts]=useState([]);
+    //const[products,setProducts]=useState([]);
 
-    useEffect(()=>{
-        axios.get('http://localhost:8000/api/product/list')
-        .then(res=>{
-            console.log(res);
-            setProducts(res.data)
-            })
-      },[])
+    
 
     const Eliminar=(i,id)=>{
         console.log('id:', id);
@@ -25,7 +19,7 @@ const ProductList =props=>{
                     axios.get('http://localhost:8000/api/product/list')
                     .then(res=>{
                         console.log('probando axios get', res);
-                        setProducts(res.data) 
+                        props.setProducts(res.data) 
                     })
                 }
                 else{
@@ -50,7 +44,7 @@ const ProductList =props=>{
             </thead>
             <tbody>
                 {
-                    products.map((p,i)=>
+                    props.products.map((p,i)=>
                     <tr key={i}>
                         <td> <Link to={`/${p._id}`} >{p.title} </Link>  </td>
                         <td>{p.price}</td>

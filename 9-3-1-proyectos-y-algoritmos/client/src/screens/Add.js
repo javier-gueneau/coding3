@@ -6,15 +6,21 @@ import { Link, useNavigate } from 'react-router-dom';
 const Add =()=>{
     
     const navigate=useNavigate();
-    const [nombre,setNombre]=useState('');
+    const [name,setName]=useState('');
+    const[amount,setAmount]=useState('');
+    const[price,setPrice]=useState('');
+    const[purchaseDate,setPurchaseDate]=useState('');
     const [error,setError]=useState('');
 
     const handleSubmit=e=>{
         e.preventDefault();
         console.log('activado handle Submit');
-        console.log(nombre);
-        axios.post('http://localhost:8000/api/autores/create',{
-            nombre
+        //console.log(nombre);
+        axios.post('http://localhost:8000/api/invest/create',{
+            name:name,
+            amount:amount,
+            price:price,
+            purchaseDate:purchaseDate
         })
         .then(res=>{
             console.log(res);
@@ -36,7 +42,16 @@ const Add =()=>{
             
         <form onSubmit={handleSubmit} >
             <label>Name:
-                <input type="text" onChange={(e)=>setNombre(e.target.value)} />
+                <input type="text" onChange={(e)=>setName(e.target.value)} />
+            </label>
+            <label>Amount:
+                <input type="text" onChange={(e)=>setAmount(e.target.value)} />
+            </label>
+            <label>Price:
+                <input type="text" onChange={(e)=>setPrice(e.target.value)} />
+            </label>
+            <label>Pirchase Date:
+                <input type="date" onChange={(e)=>setPurchaseDate(e.target.value)} />
             </label>
             <br/>
             <button>Cancel</button>

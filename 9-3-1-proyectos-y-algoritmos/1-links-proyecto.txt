@@ -1,0 +1,4 @@
+<p> <Link to={'/stock1'} >voo</Link> </p>
+        <p> <Link to={'/stock1'} >arkk </Link> </p>
+
+        <p> <Link to={'/new'} >Add Purchase.</Link> </p>

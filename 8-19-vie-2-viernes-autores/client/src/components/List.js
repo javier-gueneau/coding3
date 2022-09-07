@@ -50,7 +50,8 @@ const List =props=>{
                     <tr className={i%2==0 ? 'white':'gray'} key={i}>
                         <td>{p.nombre}</td>
                         
-                        <td className='tabla-botones'> <Link className='boton' to={`/${p._id}/edit`} >Editar</Link> 
+                        <td className='tabla-botones'> <Link className='boton' to={`/${p._id}/edit`} 
+                        > <i className="fa-solid fa-pen"></i> Editar</Link> 
                         <button className='boton' onClick={e=>Eliminar(i,p._id)} >Eliminar</button></td>
 
                     </tr>

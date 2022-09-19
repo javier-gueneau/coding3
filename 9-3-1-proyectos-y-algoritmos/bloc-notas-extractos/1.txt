@@ -1,0 +1,1 @@
+<Stock title={"VOO"} stocks={voo} remove={remove} sumOfAsset={sumOfVoo}/>

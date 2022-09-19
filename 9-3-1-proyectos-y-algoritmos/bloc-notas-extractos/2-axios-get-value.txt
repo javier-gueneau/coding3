@@ -1,0 +1,22 @@
+axios.get('http://localhost:8000/api/value/list')
+            .then(res=>{
+                //console.log('this is res.....', res.data)
+                const voo_temp=0
+                const arkk_temp=0
+                const btc_temp=0
+
+                console.log('axios get value list ........'  ,res)
+                
+                /* res.data.forEach((purchase)=>{
+                  if(purchase.name==="voo"){
+                    voo_temp.push(purchase)
+                  } else if (purchase.name==="arkk"){
+                    arkk_temp.push(purchase)
+                  } else if (purchase.name==="btc") {
+                    btc_temp.push(purchase)
+                  }
+                })
+                setVooCurrentValue(voo_temp)
+                setArkkCurrentValue(arkk_temp)
+                setBtcCurrentValue(btc_temp)
+                console.log('btc temp', btc_temp) */

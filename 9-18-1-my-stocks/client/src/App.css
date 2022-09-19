@@ -1,0 +1,122 @@
+
+.navbar{
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0% 15% 0% 15%;
+  text-decoration: none;
+  height: 50px;
+}
+
+.navbar h1, .navbar p, .navbar link, .navbar h3{
+  color: white;
+  text-decoration: none;
+}
+
+.main{
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  padding: 1%;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 2px; */
+  /* height: 500px; */
+}
+
+.home-table, th, td{
+  background-color: white;
+  border: 2px solid whitesmoke;
+  padding: 1%;
+  /* display: flex; */
+  justify-self: center;
+  border-collapse: collapse;
+  margin:25px 0;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
+.add-form{
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  gap: 7px  ;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.main-add{
+  background-color: white;
+  /* width: 60%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.App-add{
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+  /*   */
+}
+
+.main form{
+  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 1%;
+}
+
+button{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.cancel-button{
+  background-color: gainsboro;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.error{
+  color: red;
+  font-weight: 500;
+  font-style: italic;
+}
+
+
+
+/* css anterior */
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+

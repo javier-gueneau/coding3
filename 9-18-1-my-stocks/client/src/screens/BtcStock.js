@@ -18,8 +18,9 @@ const BtcStock=()=>{
     const[btcCurrentValue,setBtcCurrentValue]=useState(19500);
 
     useEffect(()=>{
-        axios.get('http://localhost:8000/api/invest/list')
-        .then(res=>{
+      //axios.get('http://localhost:8000/api/invest/list')
+      axios.get('/api/invest/list')
+      .then(res=>{
             //console.log('this is res.....', res.data)
             const btc_temp=[]
             res.data.forEach((purchase)=>{
@@ -43,7 +44,8 @@ const BtcStock=()=>{
             
             })
 
-            axios.get('http://localhost:8000/api/value/list')
+            //axios.get('http://localhost:8000/api/value/list')
+            axios.get('/api/value/list')
             .then(res=>{
               console.log('axios get value list....',  res)
               console.log('axios get res.data...',  res.data)
@@ -62,8 +64,9 @@ const BtcStock=()=>{
       const handleSubmit=e=>{
         e.preventDefault();
         console.log(btcCurrentValue)
-        axios.put(`http://localhost:8000/api/value/6324e5fb2694342e4ce03815`,{
-          name:'btc',
+        //axios.put(`http://localhost:8000/api/value/6324e5fb2694342e4ce03815`,{
+        axios.put(`/api/value/6324e5fb2694342e4ce03815`,{
+            name:'btc',
           value:btcCurrentValue
         })
         .then(res=>{
@@ -74,11 +77,13 @@ const BtcStock=()=>{
       const remove=(s,id)=>{
         console.log('Removing')
         
-        axios.delete(`http://localhost:8000/api/invest/${id}`)
+        //axios.delete(`http://localhost:8000/api/invest/${id}`)
+        axios.delete(`/api/invest/${id}`)
         .then(res=>{
             if(!res.data.error){
-                axios.get('http://localhost:8000/api/invest/list')
-                .then(res=>{
+              //axios.get('http://localhost:8000/api/invest/list')
+              axios.get('/api/invest/list')
+              .then(res=>{
                     //console.log(res)
                     const btc_temp=[]
                     res.data.forEach((purchase)=>{
@@ -118,7 +123,7 @@ const BtcStock=()=>{
               <h3>Resumen</h3>
               <Resumen sumOfVoo={sumOfBtc} VooStocks={BtcStocks} vooCurrentValue={btcCurrentValue} />
         
-              <form onSubmit={handleSubmit} >
+              <form onSubmit={handleSubmit} className='current-value-form' >
                   <label>Enter current value:
                     <input type="text" onChange={(e)=>setBtcCurrentValue(e.target.value) } />
                   </label>

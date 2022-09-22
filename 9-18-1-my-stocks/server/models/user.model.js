@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const UserSchema = new mongoose.Schema({
     name:{
@@ -6,8 +7,9 @@ const UserSchema = new mongoose.Schema({
         required:[true,"Name is required"]
     },
     email:{
-        type:string,
+        type:String,
         required:[true,"E-mail is required"],
+        unique:true,
         validate: {
             validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
             message: "Please enter a valid email"
@@ -29,7 +31,15 @@ UserSchema.pre('validate', function(next) {
       this.invalidate('confirmPassword', 'Password must match confirm password');
     }
     next();
-  });
+});
+
+UserSchema.pre('save', function(next) {
+    bcrypt.hash(this.password, 10)
+      .then(hash => {
+        this.password = hash;
+        next();
+      });
+});
 
 
 const Model = mongoose.model("User", UserSchema);

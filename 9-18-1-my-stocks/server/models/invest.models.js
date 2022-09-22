@@ -16,8 +16,10 @@ const PurchasesSchema = new mongoose.Schema({
     purchaseDate:{
         type:Date,
         required:[true,"Purchase date is required"]
-    }
-
+    },
+    purchaseUser:{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User'}
     })
 
 const Purchases = mongoose.model("Purchases", PurchasesSchema);

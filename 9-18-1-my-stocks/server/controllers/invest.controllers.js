@@ -1,23 +1,40 @@
+const jwt= require('jsonwebtoken');
+const { secret } = require('../config/jwt.config');
 const Purchases = require('../models/invest.models');
 
 module.exports.agregar = (req, res) => {
-    const {name,amount,price,purchaseDate}=req.body
-    Purchases.create({
-        name,
-        amount,
-        price,
-        purchaseDate
-    })
-    .then((purchases) =>res.json(purchases))
-    .catch(err=>res.json(err))
+
+    jwt.verify(req.cookies.usertoken, secret, (err, payload) => {
+        console.log(payload)
+        
+        const purchaseUser=payload._id
+        const {name,amount,price,purchaseDate}=req.body
+        Purchases.create({
+            name,
+            amount,
+            price,
+            purchaseDate,
+            purchaseUser
+        })
+        .then((purchases) =>res.json(purchases))
+        
+        .catch(err=>res.json(err))
+    });
+
 }
 
 module.exports.listar = (req, res) => {
-    Purchases.find({})
+
+    const payload=jwt.decode(req.cookies.usertoken, secret  );
+
+    console.log(Purchases)
+
+    Purchases.find({purchaseUser:payload._id})
         .then((purchases) =>res.json(purchases))
         .catch(err=>res.json(err))
     }
     
+
 //editar
 module.exports.editar = (req, res) => {
     Autores.findOneAndUpdate({_id:req.params.id},req.body,{new:true,runValidators:true})

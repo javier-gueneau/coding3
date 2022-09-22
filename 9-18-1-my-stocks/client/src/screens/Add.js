@@ -16,8 +16,9 @@ const Add =()=>{
         e.preventDefault();
         console.log('activado handle Submit');
         //console.log(nombre);
-        axios.post('http://localhost:8000/api/invest/create',{
-            name:name,
+        //axios.post('http://localhost:8000/api/invest/create',{
+        axios.post('/api/invest/create',{
+                name:name,
             amount:amount,
             price:price,
             purchaseDate:purchaseDate

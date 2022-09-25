@@ -1,0 +1,5 @@
+{sounds.map((e,i)=>(
+            <ul key={i}>
+                <li><h3>{e.artist} / {e.name}{e.title}</h3>   Tags : {e.tag[0]},{e.tag[1]},{e.tag[2]}</li>
+            </ul>
+        ))}

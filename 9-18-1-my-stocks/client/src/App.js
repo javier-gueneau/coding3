@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import React,{useState,useEffect, useContext} from 'react';
+import React,{useState,useEffect, useContext, createContext} from 'react';
 import Home from './screens/Home';
 
 import Add from './screens/Add';
@@ -18,9 +18,17 @@ import { UserContext } from './context/userContext';
 function App() {
 
   const navigate=useNavigate();
+
+  //const UserContext=createContext()
+
   //const[istock,setIstock]=useState('');
   //const UserState=useContext(UserContext)
   const [user,setUser]=useState(false)
+
+const [userName,setUserName]=useState("Petey")
+
+const userNameNow =useContext(UserContext);
+
   //const [loggedUser,setLoggedUser]=useState();
 
   useEffect(()=>{
@@ -40,8 +48,12 @@ function App() {
   return (
     
     <>
-      <UserContext.Provider value={{user, setUser}} >
+      <UserContext.Provider value={userName} >
 
+
+            <h1>hello buddy</h1>
+            <h2>{`hello ${userName} `} </h2>
+            <h2>{`hello ${userNameNow} `} </h2>
           <Routes>
                 <Route path={'/new'} element={<Add/>} ></Route>
                 
